@@ -66,3 +66,12 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+<!-- $ npm install --save @progress/kendo-react-inputs \
+                     @progress/kendo-react-buttons \
+                     @progress/kendo-react-charts \
+                     @progress/kendo-drawing \
+                     @progress/kendo-react-intl \
+                     @progress/kendo-theme-material \
+                     hammerjs -->

@@ -4,19 +4,29 @@ import Plot from 'react-plotly.js'
 class Stock extends  React.Component {
     state = {
         stockChartX: [],
-        stockChartY: []
+        stockChartY: [],
+        text: ''
     }
 
     componentDidMount(){
         this.fetchStock()
     }
 
-    fetchStock(){
+    handleStockSymbol = (event) => {
+       this.setState({
+           text: event.target.value
+       })
+       this.fetchStock()
+    }
+
+    
+
+      fetchStock = () => {
         const pointer = this
         console.log(pointer)
         const API_KEY = 'S55FJQ9A7F4NIHVH'
-        //let stockSymbol = 'AMZN'
-        const API_CALL = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=MSFT&outputsize=compact&apikey=${API_KEY}`
+        let stockSymbol = 'MSFT'
+        const API_CALL = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=${stockSymbol}&outputsize=compact&apikey=${API_KEY}`
         let stockChartXValuesFunction = []
         let stockChartYValuesFunction = []
 
@@ -38,11 +48,15 @@ class Stock extends  React.Component {
         })
 
         }
+
+
     
     render(){
         return(
             <div>
-                <h1>Stock  Market</h1>
+                <h1>Stock  Market {}</h1>
+                <label>Stock Symbol</label>
+                <input  onSubmit = {() => this.handleStockSymbol()}/>
                 <Plot
                     data={[
                     {
@@ -53,7 +67,7 @@ class Stock extends  React.Component {
                         marker: {color: 'red'},
                     },
                     ]}
-                    layout={ {width: 7200, height: 440, title: 'A Fancy Plot'} }
+                    layout={ {width: 800, height: 440, title: 'A Fancy Plot'} }
                 />
             </div>
 
